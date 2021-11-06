@@ -18,3 +18,10 @@ $('#modal-content').css({
 })
 /////////////////////////////////
 
+//TODO:
+//1. Build playable character class.
+//2. Build NPC class. Need to figure out customizable options.
+//3. Build the "map" renderer. 
+//4. Build the game interface.
+//5. 
+

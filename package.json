@@ -10,6 +10,7 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "@panzoom/panzoom": "^4.4.3",
         "live-server": "^1.2.1"
     }
 }
