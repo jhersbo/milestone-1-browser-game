@@ -1,21 +1,29 @@
 $(document).ready( () =>{
-    //jQuery methods that I want to run on load should go here.
+    let gameWidth = window.innerWidth;
+    let gameHeight = window.innerHeight;
+    let ratio = 0.5625;
+    if (gameHeight / gameWidth < ratio){
+        gameWidth = Math.ceil(gameHeight / ratio)
+    }
+    $('#game-canvas').css({
+        'height': gameHeight - 30 + 'px',
+        'width': gameWidth - 45 + 'px',
+        'border': '1px solid red',
+    })
+    $('#modal-content').css({
+        'width': gameWidth + 'px',
+    })
 })
 
 //Handles different aspect ratios.
-let gameWidth = window.innerWidth;
-let gameHeight = window.innerHeight;
-let ratio = 1.5;
-if (gameHeight / gameWidth < ratio){
-    gameWidth = Math.ceil(gameHeight / ratio)
-}
-$('#element').css({
-    'height': gameHeight + 'px',
-    'width': gameWidth + 'px',
-})
-$('#modal-content').css({
-    'width': gameWidth + 'px',
-})
+
+// $('#game-canvas').css({
+//     'height': gameHeight + 'px',
+//     'width': gameWidth + 'px',
+// })
+// $('#modal-content').css({
+//     'width': gameWidth + 'px',
+// })
 /////////////////////////////////
 
 //TODO:
