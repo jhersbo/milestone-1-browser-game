@@ -1,0 +1,29 @@
+Game design:
+    - Sandbox/battle Game
+Init:
+    - Collect user's email/password.
+    - Allow user to sign in.
+    - Give small description of how the game works.
+    - Choose character.
+        - Name character
+Character Classes:
+    - Warrior
+    - Mage
+    - Bruiser
+    - Archer
+Villages:
+    - Finding them gives resources (Wood, Oil, Iron, Gold)
+    - Gives resources per unit time (1/min/village) 
+    - Gives fighters
+Bases:
+    - Defeating them gives resources (Wood, Oil, Iron, Gold) and 1 mysterious component.
+    - Can be 1, 2, or 3 level. There will be 1 of Boss level. 
+        - 1: 20dps
+        - 2: 40dps
+        - 3: 80dps
+        - Boss: 300dps?
+    - While occupied, bases give military personnel.
+        - 1: 1/min
+        - 2: 2/min
+        - 3: 3/min
+ 
