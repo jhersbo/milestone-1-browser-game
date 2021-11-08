@@ -17,6 +17,8 @@ Villages:
     - Gives fighters (2/min/village)
         - Fighters: 1dps?, 30hp?
 Bases:
+    - Should have seperate screens for fight sequences?
+    
     - Defeating them gives resources (Wood, Oil, Iron, Gold) and 1 mysterious component.
     - Can be 1, 2, or 3 level. There will be 1 of Boss level. 
         - 1: 20dps, 100hp

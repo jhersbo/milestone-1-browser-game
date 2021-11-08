@@ -9,9 +9,9 @@ $(document).ready( () =>{
         'height': gameHeight - 30 + 'px',
         'width': gameWidth - 45 + 'px',
         'border': '1px solid red',
+        'background-image': './assets/images/world-1.1.jpg',
     })
     $('#modal-content').css({
         'width': gameWidth + 'px',
     })
 })
-
