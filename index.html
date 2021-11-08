@@ -4,16 +4,65 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <link rel="stylesheet" href = './assets/styles.css'>
 
-    <script 
-    src="primary.js" defer></script>
+    <script src="primary.js"></script>
+    <script src="mapgenerator.js"></script>
+    <script src="page-switcher.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     
     <title>Game title here</title>
 </head>
 <body>
-    <canvas id="game-canvas" width="200" height="100">Yuck</canvas>
+    <!-- login landing page -->
+    <div id="landing-page-container">
+        <div id="landing-page-hero">
+            <div id="registration-container">
+                <h1>Please Register Below</h1>
+                <form action="POST" id="registration-form">
+                    <label for="">Username:
+                        <input type="text" id="username-input" autocomplete="username" required>
+                    </label>
+                    <label for="">Password:
+                        <input type="password" id="password1" name="password" autocomplete="current-password" required>
+                    </label>
+                    <label for="">Confirm Password:
+                        <input type="password" name="password" id='password2' autocomplete="current-password" required>
+                    </label>
+                    <div class="registration-form-buttons">
+                        <button class="registration-button" type="submit">REGISTER</button>
+                        <label for="login-button">
+                            Already have an account?
+                            <button class="registration-button" >Login</button>
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div id="login-container">
+                <h1>LOGIN</h1>
+                <form action="" id="login-form">
+                    <label for="">Username:
+                        <input type="text" id="login-username" name="username" autocomplete="username">
+                    </label>
+                    <label for="">Password:
+                        <input type="password" id="login-password" autocomplete="current-password">
+                    </label>
+                    <div class="form-buttons">
+                        <button type="submit" id="login-button">LOGIN</button>
+                        <label for="registration-button">First time here?
+                            <button class='registration-button'id="register-button">Register</button>
+                        </label>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="landing-hero-right">
+            <img src="" alt="Logo Image">
+        </div>
+    </div>
+    <!-- game canvas -->
+    <canvas id="game-canvas" width="" height="" style="display: none;"></canvas>
 </body>
 </html>
