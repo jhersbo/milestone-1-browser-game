@@ -10,8 +10,8 @@ let formButtons = {
     login: document.getElementById('login-button'),
 }
 
-function saveRegCredentials(){
-   
+async function saveRegCredentials(){
+    
 }
 
 formButtons['register'].addEventListener('click', e =>{
