@@ -1,10 +1,7 @@
-/* *{
-    border: 1px solid red;
-} */
+#landing-page-container{
+    margin: 2rem 8rem 2rem 20rem;
+}
 
-/* #landing-page-container{
-    display: inline-flex;
-} */
 
 #landing-page-hero{
     display: block;
@@ -14,5 +11,9 @@
 
 ul{
     list-style-type: none;
+}
+
+label > input{
+    display: flex;
 }
 

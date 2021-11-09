@@ -7,13 +7,44 @@ let pages = {
 }
 
 let landingButtons = {
-    registrationButton: document.getElementById('register-button'),
-    loginButton: document.getElementById('already-have-account-login'),
+    navToRegistrationButton: document.getElementById('register-button'),
+    navToLoginButton: document.getElementById('login-btn'),
+    loginSubmit: document.getElementById('login-button'),
+    registerSubmit: document.getElementById('register-submit')
 }
 
 let currentPage = pages['loginPage']
 let gameRunning = false
 
-//Switch page function here
+function switchPage(page){
+    if(currentPage && currentPage.style){
+        currentPage.style.display = 'none'
+        pages[page].style.display = 'block'
+        currentPage = pages[page]
+        
+    }
+    if(page === 'game' && !gameRunning){
+        pages['landingPage'].style.display = 'none'
+        gameRunning = true
+        //Game running functions go here
+    }
+    if(page === 'login'){
+        //Login setup functions go here
+    }
+    if(page === 'register'){
+        //Registration setup
+    }
+    return currentPage;
+}
 
-switchPage();
+landingButtons['navToRegistrationButton'].addEventListener('click', e =>{
+    e.preventDefault();
+    switchPage('registratonPage')
+}, false)
+
+landingButtons['navToLoginButton'].addEventListener('click', e =>{
+    e.preventDefault();
+    switchPage('loginPage')
+}, false)
+
+switchPage('loginPage');

@@ -11,6 +11,10 @@
     "license": "ISC",
     "dependencies": {
         "@panzoom/panzoom": "^4.4.3",
-        "live-server": "^1.1.0"
+        "live-server": "^1.1.0",
+        "node-storage": "^0.0.9",
+        "pixl-server": "^1.0.14",
+        "pixl-server-storage": "^1.0.8",
+        "requirejs": "^2.3.6"
     }
 }
