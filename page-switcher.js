@@ -14,37 +14,6 @@ let landingButtons = {
 let currentPage = pages['loginPage']
 let gameRunning = false
 
-function switchPage(page){
-    if (currentPage && currentPage.style){
-        currentPage.style.display = 'none';
-        pages[page].style.display = 'flex';
-        currentPage = pages[page]
-    }
-    if (page === 'game' && !gameRunning){
-        pages['landingPage'].style.display = 'none'
-        gameRunning = true
-        // invoke runGame function here
-    }
-    if (page === 'loginPage'){
-        // login function goes here
-    }
-    if (page === 'registrationPage'){
-        //registration function goes here
-    }
-    return currentPage;
-}
+//Switch page function here
 
-//Landing page nav button setup
-
-// landingButtons.registrationButton.addEventListener('click', e =>{
-//     e.preventDefault()
-//     switchPage('registrationPage')
-// }, false)
-
-// landingButtons.loginButton.addEventListener('click', e =>{
-//     e.preventDefault()
-//     switchPage('loginPage')
-// }, false)
-
-// switchPage()
-
+switchPage();
