@@ -9,4 +9,10 @@
 #landing-page-hero{
     display: block;
     width: 50%;
+    padding-right: 50%;
 }
+
+ul{
+    list-style-type: none;
+}
+

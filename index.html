@@ -5,37 +5,55 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link rel="stylesheet" href = './assets/styles.css'>
-
+    <!-- my script files -->
     <script src="primary.js"></script>
     <script src="mapgenerator.js"></script>
     <script src="page-switcher.js"></script>
-
+    <!-- phaser cdn -->
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.js"></script>
+    <!-- jquery cdn -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    
+    <!-- my stylesheet -->
+    <link rel="stylesheet" href = './assets/styles.css'>
     <title>Game title here</title>
 </head>
 <body>
     <!-- login landing page -->
     <div id="landing-page-container">
         <div id="landing-page-hero">
-            <div id="registration-container">
+            <div id="registration-container" style="display: none;">
                 <h1>Please Register Below</h1>
-                <form action="POST" id="registration-form">
-                    <label for="">Username:
-                        <input type="text" id="username-input" autocomplete="username" required>
-                    </label>
-                    <label for="">Password:
-                        <input type="password" id="password1" name="password" autocomplete="current-password" required>
-                    </label>
-                    <label for="">Confirm Password:
-                        <input type="password" name="password" id='password2' autocomplete="current-password" required>
-                    </label>
+                <form action="" id="registration-form">
+                    <ul>
+                        <li>
+                            <label for="">Username:
+                                <input type="text" id="username-input" autocomplete="username">
+                            </label>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <label for="">Password:
+                                <input type="password" id="password1" name="password" autocomplete="current-password">
+                            </label>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <label for="">Confirm Password:
+                                <input type="password" name="password" id='password2' autocomplete="current-password">
+                            </label> 
+                        </li>  
+                    </ul>
                     <div class="registration-form-buttons">
-                        <button class="registration-button" type="submit">REGISTER</button>
+                        <ul>
+                            <li>
+                               <button class="registration-button" type="submit">REGISTER</button> 
+                            </li>
+                        </ul>
                         <label for="login-button">
                             Already have an account?
-                            <button class="registration-button" >Login</button>
+                            <button class="registration-button" id="login-btn">Login</button>
                         </label>
                     </div>
                 </form>
@@ -43,14 +61,27 @@
             <div id="login-container">
                 <h1>LOGIN</h1>
                 <form action="" id="login-form">
-                    <label for="">Username:
-                        <input type="text" id="login-username" name="username" autocomplete="username">
-                    </label>
-                    <label for="">Password:
-                        <input type="password" id="login-password" autocomplete="current-password">
-                    </label>
+                    <ul>
+                        <li>
+                            <label for="">Username:
+                                <input type="text" id="login-username" name="username" autocomplete="username">
+                            </label>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <label for="">Password:
+                                <input type="password" id="login-password" autocomplete="current-password">
+                            </label> 
+                        </li>
+                    </ul>
+                    
                     <div class="form-buttons">
-                        <button type="submit" id="login-button">LOGIN</button>
+                        <ul>
+                            <li>
+                               <button type="submit" id="login-button">LOGIN</button> 
+                            </li>
+                        </ul>
                         <label for="registration-button">First time here?
                             <button class='registration-button'id="register-button">Register</button>
                         </label>
@@ -63,6 +94,8 @@
         </div>
     </div>
     <!-- game canvas -->
+    
     <canvas id="game-canvas" width="" height="" style="display: none;"></canvas>
+    <canvas id="map-canvas" width="" height="" style="display: none;"></canvas>
 </body>
 </html>
