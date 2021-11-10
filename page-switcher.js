@@ -7,44 +7,46 @@ let pages = {
 }
 
 let landingButtons = {
-    navToRegistrationButton: document.getElementById('register-button'),
-    navToLoginButton: document.getElementById('login-btn'),
-    loginSubmit: document.getElementById('login-button'),
+    loginSubmit: document.getElementById('login-submit'),
     registerSubmit: document.getElementById('register-submit')
 }
 
-let currentPage = pages['loginPage']
+
 let gameRunning = false
 
+//Hate the way I built this function, but the .style method wouldn't recognize "pages[page]"
 function switchPage(page){
-    if(currentPage && currentPage.style){
-        currentPage.style.display = 'none'
-        pages[page].style.display = 'block'
-        currentPage = pages[page]
-        
+    let currentPage = pages['landingPage']
+    if(page === 'landingPage'){
+        pages['landingPage'].style.display = 'flex'
+        pages['game'].style.display = 'none'
+        pages['map'].style.display = 'none'
+        pages['landingPage'] = currentPage
     }
     if(page === 'game' && !gameRunning){
         pages['landingPage'].style.display = 'none'
-        gameRunning = true
-        //Game running functions go here
+        pages['game'].style.display = 'flex'
+        pages['map'].style.display = 'none'
+        pages['game'] = currentPage
+        //game functions
     }
-    if(page === 'login'){
-        //Login setup functions go here
+    if(page === 'map' && gameRunning){
+        pages['landingPage'].style.display = 'none'
+        pages['game'].style.display = 'none'
+        pages['map'].style.display = 'flex'
     }
-    if(page === 'register'){
-        //Registration setup
-    }
-    return currentPage;
+    return currentPage
 }
 
-landingButtons['navToRegistrationButton'].addEventListener('click', e =>{
-    e.preventDefault();
-    switchPage('registratonPage')
-}, false)
 
-landingButtons['navToLoginButton'].addEventListener('click', e =>{
+//add more functionality once the auth API is done.
+landingButtons['loginSubmit'].addEventListener('click', e =>{
     e.preventDefault();
-    switchPage('loginPage')
-}, false)
+    switchPage('game')
+})
+landingButtons['registerSubmit'].addEventListener('click', e =>{
+    e.preventDefault();
+    switchPage('game')
+})
 
-switchPage('loginPage');
+switchPage('landingPage');
