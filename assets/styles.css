@@ -1,12 +1,14 @@
 #landing-page-container{
-    margin: 2rem 8rem 2rem 20rem;
+    margin: 2rem 10rem 2rem 10rem;
+    display: flex;
+    justify-content: center;
 }
 
 
 #landing-page-hero{
     display: block;
     width: 50%;
-    padding-right: 50%;
+    /* padding-right: 50%; */
 }
 
 ul{
@@ -15,5 +17,32 @@ ul{
 
 label > input{
     display: flex;
+    
 }
 
+body{
+    background-image: url(./images/world-1.1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#registration-container, #login-container{
+    background-color: aliceblue;
+    padding: 2%;
+}
+#landing-hero-right{
+    background-color: aliceblue;
+    padding-right: 2em;
+}
+#main-title{
+    font-family: 'Irish Grover', cursive;
+    font-size: xx-large;
+}
+.auth-half > h1{
+    font-family: 'Permanent Marker', cursive;
+}
+label{
+    font-family: 'Asap', sans-serif;
+}
+/* .landing-hero{
+    box-shadow: 3px 3px 20px black;
+} */

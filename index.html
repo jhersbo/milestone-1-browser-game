@@ -9,19 +9,26 @@
     <script src="primary.js"></script>
     <script src="mapgenerator.js"></script>
     
+    <!-- my stylesheet -->
+    <link rel="stylesheet" href = './assets/styles.css'>
+    
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Asap&family=Great+Vibes&family=Irish+Grover&family=Kaushan+Script&family=Permanent+Marker&display=swap" rel="stylesheet">
+    
     <!-- phaser cdn -->
     <script src="//cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.js"></script>
     <!-- jquery cdn -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <!-- my stylesheet -->
-    <link rel="stylesheet" href = './assets/styles.css'>
-    <title>Game title here</title>
+    
+    <title>The Isle of Sachorus</title>
 </head>
 <body>
     <!-- login landing page -->
     <div id="landing-page-container">
-        <div id="landing-page-hero">
-            <div id="registration-container">
+        <div id="landing-page-hero" class="landing-hero">
+            <div class="auth-half" id="registration-container">
                 <h1>Please Register Below</h1>
                 <form action="" id="registration-form">
                     <ul>
@@ -58,7 +65,7 @@
                     </div>
                 </form>
             </div>
-            <div id="login-container">
+            <div class="auth-half" id="login-container">
                 <h1>Login</h1>
                 <form action="" id="login-form">
                     <ul>
@@ -89,8 +96,8 @@
                 </form>
             </div>
         </div>
-        <div id="landing-hero-right">
-            <!-- <img src="" alt="Logo Image"> -->
+        <div id="landing-hero-right" class="landing-hero">
+            <h1 id="main-title">The Isle of Sachorus</h1>
         </div>
     </div>
     <!-- game canvas -->
