@@ -26,7 +26,6 @@ function intakeRegData(){
         username: inputs.userRegistration.value,
         password: passwordMatch(),
     }
-    console.log(regData)
     return regData;
 }
 
@@ -52,8 +51,11 @@ async function saveRegCredentials(data){
         },
         body: JSON.stringify(data)
     });
-    console.log(response.json())
-    return response;
+    if(response.ok){
+        return true;
+    }else{
+        return false;
+    }
 }
 
 async function getRegCredentials(data){
@@ -64,21 +66,20 @@ async function getRegCredentials(data){
         },
         body: JSON.stringify(data),
     })
-    let responseObj = response.json()
-    console.log(responseObj)//needs to be fixed tomorrow
-    if(responseObj.username === data.username){
+    console.log(response.statusText)
+    if(response.statusText === 'OK'){
         console.log('true')
         return true;
+    }else{
+        return false;
     }
     
 }
-
 //Form buttons and event listeners
 //................................
 formButtons['register'].addEventListener('click', e =>{
     e.preventDefault();
     let regObj = intakeRegData()
-    console.log(regObj)
     saveRegCredentials(regObj);
 })
 
