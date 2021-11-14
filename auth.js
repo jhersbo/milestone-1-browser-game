@@ -12,12 +12,10 @@ let formButtons = {
 //Verify that passwords match
 function passwordMatch(){
     if (inputs.userRegPass1.value === inputs.userRegPass2.value){
-        // window.alert('Success! Thank you for registering.')
        return inputs.userRegPass1.value
     }else{
         window.alert('Passwords do not match. Please try again.')
     }
-    
 }
 
 //Packaging data
@@ -42,7 +40,7 @@ function intakeLoginData(){
 // to register: send body with username & password to “/register”
 // to login: send body with username & password to “/login”
 
-
+let auth;
 async function saveRegCredentials(data){
     let response = await fetch('https://game-auth.herokuapp.com/register',{
         method: 'POST',
@@ -52,10 +50,12 @@ async function saveRegCredentials(data){
         body: JSON.stringify(data)
     });
     if(response.ok){
-        return true;
+        console.log('response ok')
+        auth = true
     }else{
-        return false;
+        auth = false
     }
+    return auth;
 }
 
 async function getRegCredentials(data){
@@ -66,14 +66,12 @@ async function getRegCredentials(data){
         },
         body: JSON.stringify(data),
     })
-    console.log(response.statusText)
     if(response.statusText === 'OK'){
-        console.log('true')
-        return true;
+        auth = true
     }else{
-        return false;
+        auth = false
     }
-    
+    return auth;
 }
 //Form buttons and event listeners
 //................................
@@ -81,10 +79,12 @@ formButtons['register'].addEventListener('click', e =>{
     e.preventDefault();
     let regObj = intakeRegData()
     saveRegCredentials(regObj);
+    switchPage('game')
 })
 
 formButtons['login'].addEventListener('click', e =>{
     e.preventDefault();
     let loginObj = intakeLoginData();
     getRegCredentials(loginObj);
+    switchPage('game')
 })

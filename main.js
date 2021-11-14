@@ -14,17 +14,19 @@ let landingButtons = {
 let gameRunning = false
 
 //Hate the way I built this function, but the .style method wouldn't recognize "pages[page] object, otherwise I would've just made a generic pages[page] statement."
-function switchPage(page){
+async function switchPage(page){
     let currentPage = pages['landingPage']
     if(page === 'landingPage'){
         pages['landingPage'].style.display = 'flex'
         pages['map'].style.display = 'none'
         pages['landingPage'] = currentPage
     }
-    if(page === 'game' && !gameRunning){
+    if(page === 'game' && !gameRunning && await auth){
         pages['landingPage'].style.display = 'none'
         pages['map'].style.display = 'none'
         pages['game'] = currentPage
+        gameRunning = true;
+        console.log('game launched')
         //make a slight delay before game launches
         wait(3000).then(()=>{
             game();    
@@ -43,17 +45,4 @@ function switchPage(page){
 function wait(ms){
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-
-//add more functionality once the auth API is done.
-landingButtons['loginSubmit'].addEventListener('click', e =>{
-    e.preventDefault();
-    switchPage('game')
-    // game();
-})
-landingButtons['registerSubmit'].addEventListener('click', e =>{
-    e.preventDefault();
-    switchPage('game')
-    // game();
-})
-
-switchPage('landingPage');
+// switchPage('landingPage');
