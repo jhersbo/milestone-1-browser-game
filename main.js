@@ -45,4 +45,6 @@ async function switchPage(page){
 function wait(ms){
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-// switchPage('landingPage');
+
+let auth = true
+switchPage('game');
