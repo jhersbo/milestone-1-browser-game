@@ -67,6 +67,7 @@ async function getRegCredentials(data){
         body: JSON.stringify(data),
     })
     if(response.statusText === 'OK'){
+        console.log('response ok')
         auth = true
     }else{
         auth = false

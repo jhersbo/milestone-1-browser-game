@@ -15,7 +15,7 @@ function game(){
             default: 'arcade',
             arcade: {
                 gravity: {
-                    y: 200,
+                    y: 300,
                 },
                 debug: false,
             },
@@ -37,7 +37,10 @@ function game(){
         this.load.image('background', './assets/images/background3-720.png')
         this.load.image('base-platform', './assets/images/Mossy-Assets/Mossy-floatingplatform-2.png')
         this.load.image('three-rocks', './assets/images/Mossy-Assets/three-rocks.png')
-        this.load.image('character', 'assets/images/BlueWizard Animations/BlueWizard/2BlueWizardIdle/Chara - BlueIdle00000.png')
+        this.load.spritesheet('character', './assets/images/BlueWizard-Animations/walksheet.png',{
+            frameWidth: 514,
+            frameHeight: 514,
+        })
     }
 
     function create(){
@@ -51,6 +54,32 @@ function game(){
         platforms.create(0, gameHeight-60, 'base-platform').setScale(0.3).refreshBody
         //decorations
         this.add.image(gameWidth-(0.5*gameWidth), gameHeight-60, 'three-rocks').setScale(0.15).refreshBody
+
+        //player 
+        player = this.physics.add.sprite(100, 450, 'character')
+        player.setBounce(0.2);
+        player.setCollideWorldBounds(true);
+        player.setScale(0.5)
+
+        //player animations
+        this.anims.create({
+            key: 'right',
+            frames: this.anims.generateFrameNumbers('character', {
+                start: 0,
+                end: 9,
+            }),
+            frameRate: 10,
+            repeat: -1
+        });
+        this.anims.create({
+            key: 'left',
+            frames: this.anims.generateFrameNumbers('character', {
+                start: 10,
+                end: 19
+            }),
+            frameRate: 10,
+            repeat: -1
+        })
     }
     
     function update(){
