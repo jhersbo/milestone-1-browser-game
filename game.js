@@ -41,6 +41,10 @@ function game(){
             frameWidth: 514,
             frameHeight: 514,
         })
+        this.load.spritesheet('character-idle-right', './assets/images/BlueWizard-Animations/idle-right.png',{
+            frameWidth: 514,
+            frameHeight: 514,
+        })
     }
 
     function create(){
@@ -81,7 +85,7 @@ function game(){
                 end: 19
             }),
             frameRate: 10,
-            // repeat: -1
+            repeat: -1
         })
         this.anims.create({
             key: 'turn',
@@ -90,6 +94,15 @@ function game(){
                 end: 10,
             }),
             frameRate: 20,
+        })
+        this.anims.create({
+            key: 'idle',
+            frames: this.anims.generateFrameNumbers('character-idle-right', {
+                start: 0,
+                end: 19,
+            }),
+            frameRate: 10,
+            repeat: -1
         })
 
         //key controls
