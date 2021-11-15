@@ -60,7 +60,10 @@ function game(){
         player.setBounce(0.2);
         player.setCollideWorldBounds(true);
         player.setScale(0.5)
-
+        
+        // //collider
+        // this.physics.add.collider(player, platforms);
+        
         //player animations
         this.anims.create({
             key: 'right',
@@ -78,11 +81,35 @@ function game(){
                 end: 19
             }),
             frameRate: 10,
-            repeat: -1
+            // repeat: -1
         })
+        this.anims.create({
+            key: 'turn',
+            frames: this.anims.generateFrameNumbers('character', {
+                start: 9,
+                end: 10,
+            }),
+            frameRate: 20,
+        })
+
+        //key controls
+        cursors = this.input.keyboard.createCursorKeys();    
     }
     
     function update(){
         
+        if (cursors.left.isDown){
+            player.setVelocityX(-260)
+            player.anims.play('left', true)
+        }else if(cursors.right.isDown){
+            player.setVelocityX(260)
+            player.anims.play('right', true)
+        }else{
+            player.setVelocityX(0)
+            player.anims.play('idle')//need to put in idle
+        }
+        if (cursors.up.isDown && player.body.touching.down){
+            player.setVelocityY(-330);
+        }
     }
 }
