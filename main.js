@@ -23,6 +23,7 @@ async function switchPage(page){
         pages['landingPage'].style.display = 'flex'
         pages['map'].style.display = 'none'
         pages['score'].style.display = 'none'
+        pages['postGame'].style.display = 'none'
         pages['landingPage'] = currentPage
     }
     if(page === 'game' && !gameRunning && auth){
@@ -35,8 +36,11 @@ async function switchPage(page){
         console.log('game launched')
         //decrease background image brightness
         //make a slight delay before game launches
-        wait(0).then(()=>{
-            game();    
+        wait(100).then(()=>{
+            game();
+            wait(1000).then(()=>{
+                cycle();
+            })
         })
     }
     if(page === 'postGame' && gameRunning){
@@ -57,4 +61,4 @@ function wait(ms){
 }
 
 // let auth = true
-// switchPage('game');
+switchPage('landingPage');

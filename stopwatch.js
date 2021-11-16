@@ -25,4 +25,4 @@ function stopTimer(){
         stopTime = true
     }
 }
-cycle()
+
