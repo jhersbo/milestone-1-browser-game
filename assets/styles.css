@@ -43,6 +43,25 @@ body{
 label{
     font-family: 'Asap', sans-serif;
 }
-/* .landing-hero{
-    box-shadow: 3px 3px 20px black;
-} */
+#stopwatch{
+    font-family: 'Permanent Marker', cursive;
+    color: whitesmoke;
+    /* background-color: white; */
+    padding: 0em 1em 0em 1em;
+    position: absolute;
+    top: 5%;
+    left: 40%;
+}
+#post-game{
+    position: absolute;
+    top: 10%;
+    left: 25%;
+    width: 50%;
+    color: black;
+    background-color: whitesmoke;
+    text-align: center;
+
+    font-family: 'Irish Grover', cursive;
+
+    box-shadow: 5px 5px 20px black;
+}

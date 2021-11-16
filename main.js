@@ -2,7 +2,10 @@ let pages = {
     landingPage: document.getElementById('landing-page-container'),
     registrationPage: document.getElementById('registration-container'),
     loginPage: document.getElementById('login-container'),
-    map: document.getElementById('map-canvas')
+    map: document.getElementById('map-canvas'),
+    game: document.querySelectorAll('canvas'),
+    score: document.getElementById('stopwatch'),
+    postGame: document.getElementById('post-game')
 }
 
 let landingButtons = {
@@ -19,25 +22,31 @@ async function switchPage(page){
     if(page === 'landingPage'){
         pages['landingPage'].style.display = 'flex'
         pages['map'].style.display = 'none'
+        pages['score'].style.display = 'none'
         pages['landingPage'] = currentPage
     }
     if(page === 'game' && !gameRunning && auth){
         pages['landingPage'].style.display = 'none'
         pages['map'].style.display = 'none'
+        pages['postGame'].style.display = 'none'
+        pages['score'].style.display = 'block'
         pages['game'] = currentPage
         gameRunning = true;
         console.log('game launched')
         //decrease background image brightness
         //make a slight delay before game launches
-        wait(1000).then(()=>{
+        wait(0).then(()=>{
             game();    
         })
-        //game functions
     }
-    if(page === 'map' && gameRunning){
+    if(page === 'postGame' && gameRunning){
         pages['landingPage'].style.display = 'none'
-        pages['map'].style.display = 'flex'
-        //map functions 
+        pages['map'].style.display = 'none'
+        pages['postGame'].style.display = 'block'
+        pages['score'].style.display = 'none'
+        pages['postGame'] = currentPage
+        document.getElementById('final-time').textContent = `Great Job! You collected all 12 melons in ${time} seconds!`
+        gameRunning = false
     }
     return currentPage
 }

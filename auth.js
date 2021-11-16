@@ -53,6 +53,7 @@ async function saveRegCredentials(data){
         console.log('response ok')
         auth = true
     }else{
+        window.alert('Unable to verify your credentials. Please try again.')
         auth = false
     }
     return auth;
@@ -70,6 +71,7 @@ async function getRegCredentials(data){
         console.log('response ok')
         auth = true
     }else{
+        window.alert('Unable to verify your credentials. Please try again.')
         auth = false
     }
     return auth;

@@ -62,8 +62,12 @@ function game(){
             frameWidth: 514,
             frameHeight: 400
         })
+
     }
+    //globals
     let platforms;
+    let timeText;
+    let collectedFruits = 0;
     function create(){
         this.cameras.main.setBounds(0, 0, gameWidth, gameHeight)
         this.add.image((gameWidth / 2), (gameHeight / 2), 'background').setScale(1.5);
@@ -114,8 +118,15 @@ function game(){
         })
         //overlap function
         this.physics.add.overlap(player, fruits, collectFruits, null, this);
+        
         function collectFruits(player, fruits){
             fruits.disableBody(true, true);
+            collectedFruits++
+            if (collectedFruits === 12){
+                stopTimer()
+                switchPage('postGame')
+                game.destroy()
+            }
         }
         //colliders
         this.physics.add.collider(player, platforms);
@@ -152,7 +163,7 @@ function game(){
             key: 'idle-right',
             frames: this.anims.generateFrameNumbers('character-idle-right', {
                 start: 0,
-                end: 19,
+                end: 18,
             }),
             frameRate: 10,
             repeat: -1
@@ -167,33 +178,29 @@ function game(){
             repeat: -1
         })
         //key controls
-        cursors = this.input.keyboard.createCursorKeys();
+        keys = this.input.keyboard.createCursorKeys();
         //scoring clock
-        let time = 0;
-        let timeText;
-        timeText = this.add.text(16, 100, `Time: ${time} sec`, {
+        timeText = this.add.text(40, 100, '', {
             fontSize: '32px',
+            fontFamily: 'Permanent Marker',
             fill: '#F8F8F8'
         });
-        function stopWatch(){
-
-        }
+        timeText.fixedToCamera = true
     }
-    
     function update(){
-        if (cursors.left.isDown){
+        if (keys.left.isDown){
             player.setVelocityX(-260)
             player.anims.play('left', true)
-        }else if(cursors.right.isDown){
+        }else if(keys.right.isDown){
             player.setVelocityX(260)
             player.anims.play('right', true)
         }else{
             player.setVelocityX(0)
-            player.anims.play('idle-right')//need to put in idle
+            player.anims.play('idle-right')
         }
-        if (cursors.up.isDown && player.body.touching.down){
+        if (keys.up.isDown && player.body.touching.down){
             player.setVelocityY(-530);
             player.anims.play('jump-right')
-        }
+        } 
     }
 }
