@@ -56,5 +56,5 @@ function wait(ms){
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-let auth = true
-switchPage('game');
+// let auth = true
+// switchPage('game');
