@@ -1,3 +1,4 @@
+
 #landing-page-container{
     margin: 2rem 10rem 2rem 10rem;
     display: flex;
@@ -8,7 +9,7 @@
 #landing-page-hero{
     display: block;
     width: 50%;
-    /* padding-right: 50%; */
+    /* box-shadow: 5px 5px 18px black; */
 }
 
 ul{
@@ -24,6 +25,8 @@ body{
     background-image: url(./images/world-1.1.jpg);
     background-size: cover;
     background-repeat: no-repeat;
+    display: flex;
+    justify-content: space-around;
 }
 #registration-container, #login-container{
     background-color: aliceblue;
@@ -31,7 +34,8 @@ body{
 }
 #landing-hero-right{
     background-color: aliceblue;
-    padding-right: 2em;
+    text-align: center;
+    box-shadow: 5px 5px 18px black;
 }
 #main-title{
     font-family: 'Irish Grover', cursive;
@@ -44,13 +48,14 @@ label{
     font-family: 'Asap', sans-serif;
 }
 #stopwatch{
-    font-family: 'Permanent Marker', cursive;
+    font-family: 'Press Start 2P', cursive;
+    font-weight: 400;
     color: whitesmoke;
     /* background-color: white; */
     padding: 0em 1em 0em 1em;
     position: absolute;
-    top: 5%;
-    left: 40%;
+    top: 8%;
+    left: 33%;
 }
 #post-game{
     position: absolute;
@@ -65,4 +70,38 @@ label{
 
     box-shadow: 5px 5px 20px black;
     padding-bottom: 1em;
+}
+#game-screenshot{
+    width: 40%;
+    height: auto;
+    padding-left: 2em;
+}
+#game-description{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0em 2em 0em 2em;
+}
+#description > p{
+    padding: 0em 5em 0em 5em;
+}
+#shadow{
+    box-shadow: 5px 5px 18px black;
+    margin-right: 3em;
+}
+#controls > h1{
+    font-family: 'Irish Grover', cursive;
+}
+#controls > ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+i{
+    padding: 0em 1em;
+}
+#controls{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

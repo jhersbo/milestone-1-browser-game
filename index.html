@@ -13,89 +13,122 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Asap&family=Great+Vibes&family=Irish+Grover&family=Kaushan+Script&family=Permanent+Marker&display=swap" rel="stylesheet">
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Comforter+Brush&family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
     <!-- phaser cdn -->
     <script src="//cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.js"></script>
     <!-- jquery cdn -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     
-    <title>The Marshes</title>
+    <title>The Marshes' Melons</title>
 </head>
 <body>
     <!-- login landing page -->
     <div id="landing-page-container">
         <div id="landing-page-hero" class="landing-hero">
-            <div class="auth-half" id="registration-container">
-                <h1>Please Register Below</h1>
-                <form action="" id="registration-form">
-                    <ul>
-                        <li>
-                            <label for="">Username:
-                                <input type="text" id="username-input" autocomplete="username">
-                            </label>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <label for="">Password:
-                                <input type="password" id="password1" name="password" autocomplete="current-password">
-                            </label>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <label for="">Confirm Password:
-                                <input type="password" name="password" id='password2' autocomplete="current-password">
-                            </label> 
-                        </li>  
-                    </ul>
-                    <div class="registration-form-buttons">
+            <div id="shadow">
+                <div class="auth-half" id="registration-container">
+                    <h1>Please Register Below</h1>
+                    <form action="" id="registration-form">
                         <ul>
                             <li>
-                               <button class="registration-button" type="submit" id="register-submit">REGISTER</button> 
+                                <label for="">Username:
+                                    <input type="text" id="username-input" autocomplete="username">
+                                </label>
                             </li>
                         </ul>
-                    </div>
-                </form>
-            </div>
-            <div class="auth-half" id="login-container">
-                <h1>Login</h1>
-                <form action="" id="login-form">
-                    <ul>
-                        <li>
-                            <label for="">Username:
-                                <input type="text" id="login-username" name="username" autocomplete="username">
-                            </label>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <label for="">Password:
-                                <input type="password" id="login-password" autocomplete="current-password">
-                            </label> 
-                        </li>
-                    </ul>
-                    
-                    <div class="form-buttons">
                         <ul>
                             <li>
-                               <button type="submit" id="login-submit">LOGIN</button> 
+                                <label for="">Password:
+                                    <input type="password" id="password1" name="password" autocomplete="current-password">
+                                </label>
                             </li>
                         </ul>
-                    </div>
-                </form>
+                        <ul>
+                            <li>
+                                <label for="">Confirm Password:
+                                    <input type="password" name="password" id='password2' autocomplete="current-password">
+                                </label> 
+                            </li>  
+                        </ul>
+                        <div class="registration-form-buttons">
+                            <ul>
+                                <li>
+                                   <button class="registration-button" type="submit" id="register-submit">REGISTER</button> 
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
+                <div class="auth-half" id="login-container">
+                    <h1>Login</h1>
+                    <form action="" id="login-form">
+                        <ul>
+                            <li>
+                                <label for="">Username:
+                                    <input type="text" id="login-username" name="username" autocomplete="username">
+                                </label>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <label for="">Password:
+                                    <input type="password" id="login-password" autocomplete="current-password">
+                                </label> 
+                            </li>
+                        </ul>
+                        
+                        <div class="form-buttons">
+                            <ul>
+                                <li>
+                                   <button type="submit" id="login-submit">LOGIN</button> 
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
         <div id="landing-hero-right" class="landing-hero">
-            <h1 id="main-title">The Marshes</h1>
+            <h1 id="main-title">The Marshes' Melons</h1>
+            <div id="game-description">
+                <img src="./assets/images/game-screenshot.PNG" alt="game-screenshot" id="game-screenshot">
+                <div id="description">
+                    <h3>Your task:</h3>
+                    <p>There are some melons that need collecting! I know just the person for the job. Try to do it as quickly as possible!<br>
+                    Login to get started!</p>
+                </div>
+                
+            </div>
+            <div id="controls">
+                <h1>Controls:</h1>
+                <ul>
+                    <li>
+                        <i class="fas fa-arrow-right">  Walk right</i>
+                    </li>
+                    <li>
+                        <i class=" fas fa-arrow-up">  Jump</i>
+                    </li>
+                    <li>
+                        <i class="fas fa-arrow-left">  Walk left</i>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
     <div id="scoring-container">
         <h1 id="stopwatch"></h1>
         <div id="post-game">
             <h1 id="final-time"></h1>
-            <h3 id="thanks">Thanks for playing The Marshes!</h3>
+            <h3 id="thanks">Thanks for playing The Marshes' Melons!</h3>
             <h3>Please click the button if you'd like to play again.</h3>
-            <button id="play-again">AGAIN</button>
+            <h3>If not, just refresh the page!</h3>
+            <button id="play-again">More Mellons!</button>
         </div>
     </div>
     <!-- game canvas -->

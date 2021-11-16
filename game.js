@@ -1,7 +1,4 @@
 function game(){
-    //insert switch case statement here and run games as two functions
-
-
     //Handles different aspect ratios
     let gameWidth = window.innerWidth
     let gameHeight = window.innerHeight
@@ -97,7 +94,7 @@ function game(){
         //player 
         player = this.physics.add.sprite(100, 550, 'character')
         player.setBounce(0.2);
-        player.setCollideWorldBounds(true);
+        player.setCollideWorldBounds(false);
         player.setScale(0.3)
 
         //fruits
@@ -123,6 +120,7 @@ function game(){
             fruits.disableBody(true, true);
             collectedFruits++
             if (collectedFruits === 12){
+                gameRunning = false
                 stopTimer()
                 switchPage('postGame')
                 game.destroy(true, false) 

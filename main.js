@@ -20,15 +20,23 @@ let gameRunning = false
 //Hate the way I built this function, but the .style method wouldn't recognize "pages[page] object, otherwise I would've just made a generic pages[page] statement."
 async function switchPage(page){
     let currentPage = pages['landingPage']
+    //landing page condition
     if(page === 'landingPage'){
+        //jQuery for poorly-behaving element
+        $('#main-title').show()
+        $('game-description').show()
+        $('controls').show()
         pages['landingPage'].style.display = 'flex'
         pages['map'].style.display = 'none'
         pages['score'].style.display = 'none'
         pages['postGame'].style.display = 'none'
         pages['landingPage'] = currentPage
     }
+    //game page condition
     if(page === 'game' && !gameRunning && auth){
         pages['landingPage'].style.display = 'none'
+        pages['registrationPage'].style.display = 'none'
+        pages['loginPage'].style.display = 'none'
         pages['map'].style.display = 'none'
         pages['postGame'].style.display = 'none'
         pages['score'].style.display = 'block'
@@ -36,7 +44,6 @@ async function switchPage(page){
         gameRunning = true;
         console.log('game launched')
         //decrease background image brightness
-        //make a slight delay before game launches
         wait(100).then(()=>{
             game();
             wait(1000).then(()=>{
@@ -44,14 +51,22 @@ async function switchPage(page){
             })
         })
     }
-    if(page === 'postGame' && gameRunning){
+    //postgame page condition
+    if(page === 'postGame' && !gameRunning){
+        console.log('postgame')
         pages['landingPage'].style.display = 'none'
+        pages['registrationPage'].style.display = 'none'
+        pages['loginPage'].style.display = 'none'
         pages['map'].style.display = 'none'
+        //jQuery for poorly-behaving element
+        $('#post-game').show(100)
+        $('#main-title').hide()
+        $('#game-description').hide()
+        $('#controls').hide()
         pages['postGame'].style.display = 'block'
         pages['score'].style.display = 'none'
         pages['postGame'] = currentPage
         document.getElementById('final-time').textContent = `Great Job! You collected all 12 melons in ${time} seconds!`
-        gameRunning = false
     }
     return currentPage
 }
@@ -66,13 +81,14 @@ switchPage('landingPage');
 //function to play again
 function playAgain(){
     auth = true;
-    $('#post-game').hide()
+    //jQuery for poorly-behaving element
+    $('#post-game').hide(100)
     sec = 0
     ms = 0
     stopTime = false
     switchPage('game') 
 }
-
+//event listener for the play again button
 landingButtons['playAgain'].addEventListener('click', ()=>{
     resetTimer()
     playAgain()
