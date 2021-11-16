@@ -46,21 +46,21 @@ function game(){
         this.load.image('wood-bridge1', './assets/images/Mossy-Assets/wood-bridge1.png')
         this.load.image('wood-bridge2', 'assets/images/Mossy-Assets/wood-bridge2.png')
         //spritesheet preload
-        this.load.spritesheet('character', './assets/images/BlueWizard-Animations/walksheet.png',{
-            frameWidth: 514,
-            frameHeight: 400,
+        this.load.spritesheet('character', './assets/images/BlueWizard-Animations/walksheet2.png',{
+            frameWidth: 512,
+            frameHeight: 300,
         })
         this.load.spritesheet('melon', './assets/images/Melon.png', {
             frameWidth: 32,
             frameHeight: 32
         })
         this.load.spritesheet('character-idle-right', './assets/images/BlueWizard-Animations/idle-right.png',{
-            frameWidth: 514,
-            frameHeight: 400,
+            frameWidth: 512,
+            frameHeight: 300,
         })
         this.load.spritesheet('character-jump-right', './assets/images/BlueWizard-Animations/jump-right.png',{
-            frameWidth: 514,
-            frameHeight: 400
+            frameWidth: 512,
+            frameHeight: 300
         })
 
     }
@@ -125,7 +125,7 @@ function game(){
             if (collectedFruits === 12){
                 stopTimer()
                 switchPage('postGame')
-                game.destroy()
+                game.destroy(true, false) 
             }
         }
         //colliders

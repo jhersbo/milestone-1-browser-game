@@ -10,7 +10,8 @@ let pages = {
 
 let landingButtons = {
     loginSubmit: document.getElementById('login-submit'),
-    registerSubmit: document.getElementById('register-submit')
+    registerSubmit: document.getElementById('register-submit'),
+    playAgain: document.getElementById('play-again')
 }
 
 
@@ -60,5 +61,19 @@ function wait(ms){
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-// let auth = true
 switchPage('landingPage');
+
+//function to play again
+function playAgain(){
+    auth = true;
+    $('#post-game').hide()
+    sec = 0
+    ms = 0
+    stopTime = false
+    switchPage('game') 
+}
+
+landingButtons['playAgain'].addEventListener('click', ()=>{
+    resetTimer()
+    playAgain()
+})

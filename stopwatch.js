@@ -25,4 +25,8 @@ function stopTimer(){
         stopTime = true
     }
 }
-
+function resetTimer(){
+    ms = 0 
+    sec = 0
+    return ms, sec
+}
