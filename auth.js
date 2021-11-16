@@ -76,16 +76,16 @@ async function getRegCredentials(data){
 }
 //Form buttons and event listeners
 //................................
-formButtons['register'].addEventListener('click', e =>{
+formButtons['register'].addEventListener('click', async e =>{
     e.preventDefault();
     let regObj = intakeRegData()
-    saveRegCredentials(regObj);
+    await saveRegCredentials(regObj);
     switchPage('game')
 })
 
-formButtons['login'].addEventListener('click', e =>{
+formButtons['login'].addEventListener('click', async e =>{
     e.preventDefault();
     let loginObj = intakeLoginData();
-    getRegCredentials(loginObj);
+    await getRegCredentials(loginObj);
     switchPage('game')
 })

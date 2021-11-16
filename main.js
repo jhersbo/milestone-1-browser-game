@@ -21,14 +21,15 @@ async function switchPage(page){
         pages['map'].style.display = 'none'
         pages['landingPage'] = currentPage
     }
-    if(page === 'game' && !gameRunning && await auth){
+    if(page === 'game' && !gameRunning && auth){
         pages['landingPage'].style.display = 'none'
         pages['map'].style.display = 'none'
         pages['game'] = currentPage
         gameRunning = true;
         console.log('game launched')
+        //decrease background image brightness
         //make a slight delay before game launches
-        wait(3000).then(()=>{
+        wait(1000).then(()=>{
             game();    
         })
         //game functions
@@ -46,5 +47,5 @@ function wait(ms){
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-let auth = true
-switchPage('game');
+// let auth = true
+// switchPage('game');
