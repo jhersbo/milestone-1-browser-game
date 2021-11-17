@@ -8,8 +8,9 @@ function game(){
         gameWidth = Math.ceil(gameHeight / ratio)
     }
     //..................................
+    //parameters by which to run the game
     let config = {
-        type: Phaser.AUTO,
+        type: Phaser.AUTO, // will run via HTML canvas
         width: gameWidth,
         height: gameHeight,
         physics: {
@@ -22,14 +23,15 @@ function game(){
             },
         },
         scene: {
-            preload: preload,
-            create: create,
+            //call the functions below. 'this' === scene
+            preload: preload, 
+            create: create, 
             update: update
         }
     };
-
+    //Phaser instantiation
     let game = new Phaser.Game(config)
-
+    //adjusting window for game
     document.body.style.display = 'flex'
     document.body.style.justifyContent = 'center'
     document.body.style.alignItems = 'center'
@@ -45,9 +47,10 @@ function game(){
         this.load.image('wood-bridge2', 'assets/images/Mossy-Assets/wood-bridge2.png')
         //spritesheet preload
         this.load.spritesheet('character', './assets/images/BlueWizard-Animations/walksheet2.png',{
-            frameWidth: 512,
-            frameHeight: 300,
+            frameWidth: 512, //get by dividing length by n images
+            frameHeight: 300,// i'm limited to 20 at this resolution
         })
+        //these don't do anything right now
         this.load.spritesheet('melon', './assets/images/Melon.png', {
             frameWidth: 32,
             frameHeight: 32
@@ -62,11 +65,12 @@ function game(){
         })
 
     }
-    //globals
+    //game()-wide variables
     let platforms;
     let timeText;
     let collectedFruits = 0;
     function create(){
+        //create static and dynamic objects 
         this.cameras.main.setBounds(0, 0, gameWidth, gameHeight)
         this.add.image((gameWidth / 2), (gameHeight / 2), 'background').setScale(1.5);
         //creating top moss borer
@@ -75,7 +79,7 @@ function game(){
         //decorations
         this.add.image(gameWidth-(0.5*gameWidth), gameHeight-60, 'three-rocks').setScale(0.15)
         this.add.image(gameWidth-(0.9*gameWidth), gameHeight-40, 'lilhill1').setScale(0.2)
-        
+        //static platforms
         platforms = this.physics.add.staticGroup();
         //side platforms
         platforms.create(gameWidth, gameHeight-60, 'base-platform').setScale(0.2).refreshBody();
@@ -90,7 +94,7 @@ function game(){
         platforms.create(gameWidth-(0.6*gameWidth), gameHeight-(0.1*gameHeight), 'wood-bridge2').setScale(2).refreshBody();
         platforms.create(gameWidth-(0.35*gameWidth), gameHeight-(0.1*gameHeight), 'wood-bridge2').setScale(2).refreshBody();
         platforms.create(gameWidth-(0.75*gameWidth), gameHeight-(0.1*gameHeight), 'wood-bridge2').setScale(2).refreshBody();
-        
+        //adding moving platforms in next level
 
         //player 
         player = this.physics.add.sprite(100, 550, 'character')
@@ -101,18 +105,18 @@ function game(){
         //fruits
         fruits = this.physics.add.group({
             key: 'melon',
-            repeat: 12,
+            repeat: 12, //number of melons to spawn 
             setXY: {
                 x: gameWidth-(0.9*gameWidth),
                 y: 0,
-                stepX: 80,
+                stepX: 80, //X distance apart
                 stepY: 0
-                //implement rng to set these values
             },
         });
     
         fruits.children.iterate((child)=>{
             child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8))
+            //randomizes the amound that the melons bounce when they hit a static group. FloatBetween is a Phaser math function. Similar to building a function with nested Math.random() functions to return random numbers between 0.4 & 0.8
         })
         //overlap function
         this.physics.add.overlap(player, fruits, collectFruits, null, this);
@@ -120,9 +124,10 @@ function game(){
         function collectFruits(player, fruits){
             fruits.disableBody(true, true);
             collectedFruits++
+            //END CONDITION
             if (collectedFruits === 12){
                 gameRunning = false
-                stopTimer()
+                stopTimer()//stops timer
                 switchPage('postGame')
                 game.destroy(true, false) 
             }
@@ -135,11 +140,11 @@ function game(){
         this.anims.create({
             key: 'right',
             frames: this.anims.generateFrameNumbers('character', {
-                start: 0,
+                start: 0, // which frames to begin and end at. 
                 end: 9,
             }),
-            frameRate: 20,
-            repeat: -1
+            frameRate: 20, 
+            repeat: -1 //indicates that the animation should repeat
         });
         this.anims.create({
             key: 'left',
@@ -158,6 +163,7 @@ function game(){
             }),
             frameRate: 20,
         })
+        //these don't do anything for the same reason as the other spritesheets
         this.anims.create({
             key: 'idle-right',
             frames: this.anims.generateFrameNumbers('character-idle-right', {
@@ -177,6 +183,7 @@ function game(){
             repeat: -1
         })
         //key controls
+        //.createCursorKeys is a method of the Phaser.input.keyboard persuation
         keys = this.input.keyboard.createCursorKeys();
         //scoring clock
         timeText = this.add.text(40, 100, '', {
@@ -187,7 +194,7 @@ function game(){
         timeText.fixedToCamera = true
     }
     function update(){
-        if (keys.left.isDown){
+        if (keys.left.isDown){//each is a method attached to each key object
             player.setVelocityX(-260)
             player.anims.play('left', true)
         }else if(keys.right.isDown){
@@ -197,7 +204,7 @@ function game(){
             player.setVelocityX(0)
             player.anims.play('idle-right')
         }
-        if (keys.up.isDown && player.body.touching.down){
+        if (keys.up.isDown && player.body.touching.down){//player must be on the ground in order to jump
             player.setVelocityY(-530);
             player.anims.play('jump-right')
         } 
