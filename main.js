@@ -44,9 +44,9 @@ async function switchPage(page){
         pages['game'] = currentPage
         gameRunning = true;
         console.log('game launched')
-        //decrease background image brightness
         wait(100).then(()=>{
             game();
+            //small grace period for the player since there's no countdown
             wait(1000).then(()=>{
                 cycle();
             })

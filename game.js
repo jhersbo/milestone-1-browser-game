@@ -4,12 +4,11 @@ function game(){
     //Handles different aspect ratios
     let gameWidth = window.innerWidth
     let gameHeight = window.innerHeight
-    let ratio = 0.7;//default 0.9
+    let ratio = 0.7;
     if (gameHeight / gameWidth < ratio){
         gameWidth = Math.ceil(gameHeight / ratio)
     }
-    //..................................
-    //parameters by which to run the game
+    //parameters by which to run the game. pass as argument in the Game method.
     let config = {
         type: Phaser.AUTO, // will run via HTML canvas
         width: gameWidth,
@@ -24,7 +23,7 @@ function game(){
             },
         },
         scene: {
-            //call the functions below. 'this' === scene
+            //call the functions below. 'this' => scene
             preload: preload, 
             create: create, 
             update: update
@@ -82,7 +81,7 @@ function game(){
         //static platforms
         platforms = this.physics.add.staticGroup();
         //side platforms
-        platforms.create(gameWidth, gameHeight-60, 'base-platform').setScale(0.2).refreshBody();//refresh body is a method to use when resizing static objects. Basically just syncs the image with the 'hitbox' of the platform
+        platforms.create(gameWidth, gameHeight-60, 'base-platform').setScale(0.2).refreshBody();//refresh body is a method to use when resizing static objects. Basically just syncs the image on the canvas with the 'hitbox' of the platform in the Phaser physics object
         platforms.create(0, gameHeight-(0.3*gameHeight), 'base-platform').setScale(0.2).refreshBody();
         platforms.create(0, gameHeight-(0.7*gameHeight), 'base-platform').setScale(0.2).refreshBody();
         platforms.create(gameWidth, gameHeight-(0.7*gameHeight), 'base-platform').setScale(0.2).refreshBody();
@@ -129,7 +128,8 @@ function game(){
                 gameRunning = false
                 stopTimer()//stops timer
                 switchPage('postGame')
-                game.destroy(true, false) 
+                game.destroy(true, false)
+                //removes game from page. first parameter removes the game canvas, second indicates whether or not to also remove the game plugins. Since I want to boot a second instance of the game if the user selects to play again, I want to leave the plugins behind to be used by the next instance. 
             }
         }
         //colliders
