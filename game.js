@@ -97,7 +97,7 @@ function game(){
         //adding moving platforms in next level
 
         //player 
-        player = this.physics.add.sprite(100, 550, 'character')
+        player = this.physics.add.sprite(gameWidth-(0.95*gameWidth), gameHeight-(0.5*gameHeight), 'character')
         player.setBounce(0.2);
         player.setCollideWorldBounds(false);
         player.setScale(0.3)
@@ -107,9 +107,9 @@ function game(){
             key: 'melon',
             repeat: 12, //number of melons to spawn 
             setXY: {
-                x: gameWidth-(0.9*gameWidth),
+                x: gameWidth-(0.85*gameWidth),
                 y: 0,
-                stepX: 80, //X distance apart
+                stepX: 81, //X distance apart
                 stepY: 0
             },
         });
@@ -125,7 +125,7 @@ function game(){
             fruits.disableBody(true, true);
             collectedFruits++
             //END CONDITION
-            if (collectedFruits === 12){
+            if (collectedFruits === 13){
                 gameRunning = false
                 stopTimer()//stops timer
                 switchPage('postGame')

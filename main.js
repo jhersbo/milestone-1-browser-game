@@ -68,7 +68,7 @@ async function switchPage(page){
         pages['postGame'].style.display = 'block'
         pages['score'].style.display = 'none'
         pages['postGame'] = currentPage
-        document.getElementById('final-time').textContent = `Great Job! You collected all 12 melons in ${time} seconds!`
+        document.getElementById('final-time').textContent = `Great Job! You collected all 13 melons in ${time} seconds!`
     }
     return currentPage
 }
