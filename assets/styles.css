@@ -9,6 +9,7 @@
 #landing-page-hero{
     display: block;
     width: 50%;
+   
     /* box-shadow: 5px 5px 18px black; */
 }
 
@@ -18,6 +19,7 @@ ul{
 
 label > input{
     display: flex;
+    width: auto;
     
 }
 
@@ -29,23 +31,38 @@ body{
     justify-content: space-around;
 }
 #registration-container, #login-container{
-    background-color: aliceblue;
+    background-color: #FFF0CD;
     padding: 2%;
 }
 #landing-hero-right{
-    background-color: aliceblue;
+    background-color: #FFF0CD;
     text-align: center;
     box-shadow: 5px 5px 18px black;
+    padding: 1rem;
+    color: #00163F;
 }
 #main-title{
-    font-family: 'Irish Grover', cursive;
-    font-size: xx-large;
+    font-family: 'Press Start 2P', cursive;
+    font-weight: 900;
+    color: #00163F;
+    border: 2px solid #144673;
+    border-radius: 15px;
+    padding: 0.5em 0em;
+    box-shadow: 1px -3px 15px #E33201;
 }
 .auth-half > h1{
-    font-family: 'Permanent Marker', cursive;
+    font-family: 'Press Start 2P', cursive;
+    font-weight: 800;
+    padding: 0em 0.5em;
+    color: #00163F;
+}
+.auth-half{
+    padding-right: 10em;
+    color: #00163F;
 }
 label{
-    font-family: 'Asap', sans-serif;
+    font-family: 'Press Start 2P', cursive;
+    font-weight: 200;
 }
 #stopwatch{
     font-family: 'Press Start 2P', cursive;
@@ -62,8 +79,8 @@ label{
     top: 10%;
     left: 25%;
     width: 50%;
-    color: black;
-    background-color: whitesmoke;
+    color: #00163F;
+    background-color: #FFF0CD;
     text-align: center;
 
     font-family: 'Irish Grover', cursive;
@@ -74,23 +91,32 @@ label{
 #game-screenshot{
     width: 40%;
     height: auto;
-    padding-left: 2em;
+    padding-left: 0em;
+    box-shadow: 1px 3px 10px black;
 }
 #game-description{
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0em 2em 0em 2em;
+    background-color: #FF9210;
+    border: 0.5em solid #E33201;
+    border-radius: 30px 0px 30px 0px;
 }
 #description > p{
-    padding: 0em 5em 0em 5em;
+    padding: 0.5em 2em 0em 2em;
+}
+#description{
+    font-family: 'Press Start 2P', cursive;
+    box-shadow: 1px 3px 10px black;
+    background-color: #FFF0CD;
 }
 #shadow{
     box-shadow: 5px 5px 18px black;
     margin-right: 3em;
 }
 #controls > h1{
-    font-family: 'Irish Grover', cursive;
+    font-family: 'Press Start 2P', cursive;
 }
 #controls > ul{
     display: flex;
@@ -103,5 +129,10 @@ i{
 #controls{
     display: flex;
     justify-content: center;
+    margin-top: 1em;
     align-items: center;
+    border: 2px solid #144673;
+    border-radius: 15px;
+    padding: 0.5em 0.5em;
+    box-shadow: 1px -3px 15px #E33201;
 }

@@ -1,8 +1,9 @@
+let gameWidth;
 function game(){
     //Handles different aspect ratios
     let gameWidth = window.innerWidth
     let gameHeight = window.innerHeight
-    let ratio = 0.9;
+    let ratio = 0.66;//default 0.9
     if (gameHeight / gameWidth < ratio){
         gameWidth = Math.ceil(gameHeight / ratio)
     }
