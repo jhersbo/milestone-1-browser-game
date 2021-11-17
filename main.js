@@ -26,6 +26,7 @@ async function switchPage(page){
         $('#main-title').show()
         $('game-description').show()
         $('controls').show()
+        $('#landing-hero-right').show()
         pages['landingPage'].style.display = 'flex'
         pages['map'].style.display = 'none'
         pages['score'].style.display = 'none'
@@ -63,6 +64,7 @@ async function switchPage(page){
         $('#main-title').hide()
         $('#game-description').hide()
         $('#controls').hide()
+        $('#landing-hero-right').hide()
         pages['postGame'].style.display = 'block'
         pages['score'].style.display = 'none'
         pages['postGame'] = currentPage
