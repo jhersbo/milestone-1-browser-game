@@ -1,4 +1,5 @@
 let gameWidth;
+let gameHeight;
 function game(){
     //Handles different aspect ratios
     let gameWidth = window.innerWidth
@@ -67,7 +68,6 @@ function game(){
     }
     //game()-wide variables
     let platforms;
-    let timeText;
     let collectedFruits = 0;
     function create(){
         //create static and dynamic objects 
@@ -82,7 +82,7 @@ function game(){
         //static platforms
         platforms = this.physics.add.staticGroup();
         //side platforms
-        platforms.create(gameWidth, gameHeight-60, 'base-platform').setScale(0.2).refreshBody();
+        platforms.create(gameWidth, gameHeight-60, 'base-platform').setScale(0.2).refreshBody();//refresh body is a method to use when resizing static objects. Basically just syncs the image with the 'hitbox' of the platform
         platforms.create(0, gameHeight-(0.3*gameHeight), 'base-platform').setScale(0.2).refreshBody();
         platforms.create(0, gameHeight-(0.7*gameHeight), 'base-platform').setScale(0.2).refreshBody();
         platforms.create(gameWidth, gameHeight-(0.7*gameHeight), 'base-platform').setScale(0.2).refreshBody();
@@ -116,7 +116,7 @@ function game(){
     
         fruits.children.iterate((child)=>{
             child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8))
-            //randomizes the amound that the melons bounce when they hit a static group. FloatBetween is a Phaser math function. Similar to building a function with nested Math.random() functions to return random numbers between 0.4 & 0.8
+            //randomizes the amount that the melons bounce when they collide with a static group. FloatBetween is a Phaser math function. Similar to building a function with nested Math.random() functions to return random numbers between 0.4 & 0.8
         })
         //overlap function
         this.physics.add.overlap(player, fruits, collectFruits, null, this);
@@ -183,15 +183,8 @@ function game(){
             repeat: -1
         })
         //key controls
-        //.createCursorKeys is a method of the Phaser.input.keyboard persuation
+        //.createCursorKeys is a method within the scene object. Phaser has built-in methods for handling key inputs inside the game
         keys = this.input.keyboard.createCursorKeys();
-        //scoring clock
-        timeText = this.add.text(40, 100, '', {
-            fontSize: '32px',
-            fontFamily: 'Permanent Marker',
-            fill: '#F8F8F8'
-        });
-        timeText.fixedToCamera = true
     }
     function update(){
         if (keys.left.isDown){//each is a method attached to each key object
