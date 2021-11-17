@@ -3,7 +3,7 @@ function game(){
     //Handles different aspect ratios
     let gameWidth = window.innerWidth
     let gameHeight = window.innerHeight
-    let ratio = 0.66;//default 0.9
+    let ratio = 0.7;//default 0.9
     if (gameHeight / gameWidth < ratio){
         gameWidth = Math.ceil(gameHeight / ratio)
     }
@@ -89,7 +89,7 @@ function game(){
         platforms.create(gameWidth-(0.3*gameWidth), gameHeight-(0.8*gameHeight), 'wood-bridge2').setScale(1).refreshBody();
         platforms.create(gameWidth-(0.6*gameWidth), gameHeight-(0.1*gameHeight), 'wood-bridge2').setScale(2).refreshBody();
         platforms.create(gameWidth-(0.35*gameWidth), gameHeight-(0.1*gameHeight), 'wood-bridge2').setScale(2).refreshBody();
-        platforms.create(gameWidth-(0.85*gameWidth), gameHeight-(0.1*gameHeight), 'wood-bridge2').setScale(2).refreshBody();
+        platforms.create(gameWidth-(0.75*gameWidth), gameHeight-(0.1*gameHeight), 'wood-bridge2').setScale(2).refreshBody();
         
 
         //player 
