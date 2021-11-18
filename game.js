@@ -50,7 +50,6 @@ function game(){
             frameWidth: 114, //get by dividing length by n images
             frameHeight: 90,// i'm limited to 20 at this resolution
         })
-        //these don't do anything right now
         this.load.spritesheet('melon', './assets/images/Melon.png', {
             frameWidth: 32,
             frameHeight: 32
@@ -60,6 +59,10 @@ function game(){
             frameHeight: 90,
         })
         this.load.spritesheet('character-jump-right', './assets/images/BlueWizard-Animations/jump-right_downsized.png',{
+            frameWidth: 114,
+            frameHeight: 90
+        })
+        this.load.spritesheet('character-jump-left', './assets/images/BlueWizard-Animations/jump-left_downsized.png', {
             frameWidth: 114,
             frameHeight: 90
         })
@@ -155,8 +158,8 @@ function game(){
                 start: 0, // which frames to begin and end at. 
                 end: 9,
             }),
-            frameRate: 10, 
-            repeat: -1 //indicates that the animation should repeat
+            frameRate: 20, 
+            repeat: 1 //indicates that the animation should repeat
         });
         this.anims.create({
             key: 'left',
@@ -164,16 +167,8 @@ function game(){
                 start: 10,
                 end: 19
             }),
-            frameRate: 10,
-            repeat: -1
-        })
-        this.anims.create({
-            key: 'turn',
-            frames: this.anims.generateFrameNumbers('character', {
-                start: 9,
-                end: 10,
-            }),
             frameRate: 20,
+            repeat: 1
         })
         //these don't do anything for the same reason as the other spritesheets
         this.anims.create({
@@ -194,6 +189,15 @@ function game(){
             frameRate: 10,
             repeat: -1
         })
+        this.anims.create({
+            key: 'jump-left',
+            frames: this.anims.generateFrameNumbers('character-jump-left',{
+                start: 0,
+                end: 7
+            }),
+            frameRate: 10,
+            repeat: -1
+        })
         //key controls
         //.createCursorKeys is a method within the scene object. Phaser has built-in methods for handling key inputs inside the game
         keys = this.input.keyboard.createCursorKeys();
@@ -201,17 +205,25 @@ function game(){
     function update(){
         if (keys.left.isDown){//each is a method attached to each key object
             player.setVelocityX(-260)
-            player.anims.play('left', true)
+            if(player.body.touching.down){
+                player.anims.play('left', true)
+            }else{
+                player.anims.play('jump-left', true)
+            }
+            
         }else if(keys.right.isDown){
             player.setVelocityX(260)
-            player.anims.play('right', true)
+            if(player.body.touching.down){
+                player.anims.play('right', true)
+            }else{
+                player.anims.play('jump-right', true)
+            }   
         }else{
             player.setVelocityX(0)
             player.anims.play('idle-right', true)
         }
         if (keys.up.isDown && player.body.touching.down){//player must be on the ground in order to jump
-            player.setVelocityY(-530);
-            player.anims.play('jump-right', true)
+            player.setVelocityY(-530);  
         } 
     }
 }
