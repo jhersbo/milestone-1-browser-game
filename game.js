@@ -46,9 +46,9 @@ function game(){
         this.load.image('wood-bridge1', './assets/images/Mossy-Assets/wood-bridge1.png')
         this.load.image('wood-bridge2', 'assets/images/Mossy-Assets/wood-bridge2.png')
         //spritesheet preload
-        this.load.spritesheet('character', './assets/images/BlueWizard-Animations/walksheet2.png',{
-            frameWidth: 512, //get by dividing length by n images
-            frameHeight: 300,// i'm limited to 20 at this resolution
+        this.load.spritesheet('character', './assets/images/BlueWizard-Animations/walksheet_downsized.png',{
+            frameWidth: 114, //get by dividing length by n images
+            frameHeight: 90,// i'm limited to 20 at this resolution
         })
         //these don't do anything right now
         this.load.spritesheet('melon', './assets/images/Melon.png', {
@@ -56,12 +56,12 @@ function game(){
             frameHeight: 32
         })
         this.load.spritesheet('character-idle-right', './assets/images/BlueWizard-Animations/idle-right.png',{
-            frameWidth: 512,
-            frameHeight: 300,
+            frameWidth: 120,
+            frameHeight: 90,
         })
-        this.load.spritesheet('character-jump-right', './assets/images/BlueWizard-Animations/jump-right.png',{
-            frameWidth: 512,
-            frameHeight: 300
+        this.load.spritesheet('character-jump-right', './assets/images/BlueWizard-Animations/jump-right_downsized.png',{
+            frameWidth: 114,
+            frameHeight: 90
         })
 
     }
@@ -69,7 +69,7 @@ function game(){
     let platforms;
     let collectedFruits = 0;
     function create(){
-        //create static and dynamic objects 
+        //loading non-interactive images
         this.cameras.main.setBounds(0, 0, gameWidth, gameHeight)
         this.add.image((gameWidth / 2), (gameHeight / 2), 'background').setScale(1.5);
         //creating top moss borer
@@ -99,12 +99,12 @@ function game(){
         player = this.physics.add.sprite(gameWidth-(0.95*gameWidth), gameHeight-(0.5*gameHeight), 'character')
         player.setBounce(0.2);
         player.setCollideWorldBounds(false);
-        player.setScale(0.3)
+        player.setScale(1.1)
 
         //fruits
         fruits = this.physics.add.group({
             key: 'melon',
-            repeat: 12, //number of melons to spawn 
+            repeat: 12, //number-1 of melons to spawn 
             setXY: {
                 x: gameWidth-(0.85*gameWidth),
                 y: 0,
@@ -117,19 +117,31 @@ function game(){
             child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8))
             //randomizes the amount that the melons bounce when they collide with a static group. FloatBetween is a Phaser math function. Similar to building a function with nested Math.random() functions to return random numbers between 0.4 & 0.8
         })
-        //overlap function
+        //overlap method
         this.physics.add.overlap(player, fruits, collectFruits, null, this);
         
+        function jumpRight(){
+            if(player.body.touching.down){
+                player.anims.play('jump-right')
+            }
+            
+        }
+
         function collectFruits(player, fruits){
             fruits.disableBody(true, true);
             collectedFruits++
             //END CONDITION
             if (collectedFruits === 13){
-                gameRunning = false
                 stopTimer()//stops timer
-                switchPage('postGame')
-                game.destroy(true, false)
-                //removes game from page. first parameter removes the game canvas, second indicates whether or not to also remove the game plugins. Since I want to boot a second instance of the game if the user selects to play again, I want to leave the plugins behind to be used by the next instance. 
+                jumpRight()
+                wait(1000).then(()=>{
+                    gameRunning = false
+                    
+                    switchPage('postGame')
+                    game.destroy(true, false)
+                    //removes game from page. first parameter removes the game canvas, second indicates whether or not to also remove the game plugins. Since I want to boot a second instance of the game if the user selects to play again, I want to leave the plugins behind to be used by the next instance.
+                })
+                
             }
         }
         //colliders
@@ -143,7 +155,7 @@ function game(){
                 start: 0, // which frames to begin and end at. 
                 end: 9,
             }),
-            frameRate: 20, 
+            frameRate: 10, 
             repeat: -1 //indicates that the animation should repeat
         });
         this.anims.create({
@@ -152,7 +164,7 @@ function game(){
                 start: 10,
                 end: 19
             }),
-            frameRate: 20,
+            frameRate: 10,
             repeat: -1
         })
         this.anims.create({
@@ -195,11 +207,11 @@ function game(){
             player.anims.play('right', true)
         }else{
             player.setVelocityX(0)
-            player.anims.play('idle-right')
+            player.anims.play('idle-right', true)
         }
         if (keys.up.isDown && player.body.touching.down){//player must be on the ground in order to jump
             player.setVelocityY(-530);
-            player.anims.play('jump-right')
+            player.anims.play('jump-right', true)
         } 
     }
 }

@@ -16,7 +16,8 @@ let landingButtons = {
 
 
 let gameRunning = false
-
+switchPage('landingPage');
+// auth = true
 //Hate the way I built this function, but the .style method wouldn't recognize "pages[page] object, otherwise I would've just made a generic pages[page] statement."
 async function switchPage(page){
     let currentPage = pages['landingPage']
@@ -78,7 +79,7 @@ function wait(ms){
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-switchPage('landingPage');
+
 
 //function to play again
 function playAgain(){
