@@ -34,6 +34,16 @@ function intakeLoginData(){
     }
     return loginData;
 }
+
+//Getting user's username from login info
+let user;
+function getUserName(){
+    if(auth === true){
+        let loginData = intakeLoginData()
+        user = loginData.username    
+    }
+    return user;
+}
 //Auth API **THANKS KATIE :)**
 
 // https://game-auth.herokuapp.com
