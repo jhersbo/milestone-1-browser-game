@@ -27,8 +27,8 @@ body{
     background-image: url(./images/world-1.1.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    display: flex;
-    justify-content: space-around;
+    /* display: flex;
+    justify-content: space-around; */
 }
 #registration-container, #login-container{
     background-color: #FFF0CD;
@@ -85,7 +85,7 @@ label{
 
     font-family: 'Irish Grover', cursive;
 
-    box-shadow: 5px 5px 20px black;
+    box-shadow: 5px 5px 18px black;
     padding-bottom: 1em;
 }
 #game-screenshot{
@@ -135,4 +135,18 @@ i{
     border-radius: 15px;
     padding: 0.5em 0.5em;
     box-shadow: 1px -3px 15px #E33201;
+}
+
+header{
+    background-color: #FFF0CD;
+    display: flex;
+    justify-content: flex-start;
+    margin: 0em 1em;
+    padding: 0em 0em 0em 6em;
+    border-radius: 10px 10px;
+    box-shadow: 5px 5px 18px black;
+}
+#greeting{
+    font-family: 'Press Start 2P', cursive;
+    font-weight: 100;
 }

@@ -44,6 +44,11 @@ function getUserName(){
     }
     return user;
 }
+//update greeting text
+function updateGreeting(){
+    document.getElementById('greeting').textContent = `Welcome, ${getUserName}!`
+}
+
 //Auth API **THANKS KATIE :)**
 
 // https://game-auth.herokuapp.com
